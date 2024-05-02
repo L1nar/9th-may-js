@@ -42,13 +42,19 @@ let questions = [
 ]
 
 let images = ['img/num1.jpg', 'img/num2.jpg', 'img/num3.jpg'];
+let img = document.getElementById('img');
+let i = 0;
+img.src = images[i];
+img.height = 600;
 
 let currentQuestion = 0; // Текущий вопрос
 let correctAnswers = 0; // Кол-во правильных ответов
 
 function displayQuestion() {
     let questionElem = document.getElementById('question__num'); // Получить блоке куда размещать вопрос
-    questionElem.textContent = `Вопрос ${currentQuestion + 1}: ${questions[currentQuestion].question}`;
+    questionElem.textContent = `Вопрос №${currentQuestion + 1}`;
+    let questionContent = document.getElementById('question');
+    questionContent.textContent = `${questions[currentQuestion].question}`;
     // Получим блоки кнопок
     let optionsElem = document.getElementById('options');
     // Очистим блок с кнопками
@@ -72,3 +78,22 @@ function displayQuestion() {
         nextQuestion(target.textContent);
     }, { once: true });
 }
+
+// Функция для перехода к следующему вопросу
+function nextQuestion(answer) {
+    // Если ответ равен корректному то
+    if (answer === questions[currentQuestion].correctAnswer) {
+        // Увеличиваем на единицу количество верных ответов
+        correctAnswers++;
+    }
+    currentQuestion++; // Переход к следующему вопросу
+    i++;
+    // Если номер текущего вопроса меньше количества вопросов то отображаем следующий вопрос
+    if (currentQuestion < questions.length) {
+        displayQuestion(); // Отображаем следующий вопрос
+    } else {
+        displayResult();
+    }
+}
+
+displayQuestion();
