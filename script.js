@@ -41,7 +41,7 @@ let questions = [
     },
 ]
 
-let images = ['img/num1.jpg', 'img/num2.jpg', 'img/num3.jpg'];
+let images = ['img/num1.jpg', 'img/num2.jpg', 'img/num3.jpg', 'img/num4.jpg', 'img/num5.jpg', 'img/num6.jpg', 'img/num7.jpg', 'img/num8.jpg',];
 let img = document.getElementById('img');
 let i = 0;
 img.src = images[i];
@@ -88,12 +88,27 @@ function nextQuestion(answer) {
     }
     currentQuestion++; // Переход к следующему вопросу
     i++;
+    img.src = images[i];
     // Если номер текущего вопроса меньше количества вопросов то отображаем следующий вопрос
     if (currentQuestion < questions.length) {
         displayQuestion(); // Отображаем следующий вопрос
     } else {
         displayResult();
     }
+}
+
+function displayResult() {
+    console.log(nextQuestion);
+    const questionElem = document.getElementById('question');
+    const optionsElem = document.getElementById('options');
+    const resultElem = document.getElementById('result');
+    const container = document.getElementById('container');
+    const gradeElem = document.getElementById('grade');
+    questionElem.style.display = 'none';
+    container.style.display = 'none';
+    optionsElem.style.display = 'none';
+    restart.style.display = 'block';
+    resultElem.textContent = `${input.value}, у вас правильных ответов: ${correctAnswers} из ${questions.length}`
 }
 
 displayQuestion();
