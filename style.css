@@ -10,7 +10,7 @@ html {
 body {
     font-family: "Comfortaa", sans-serif;
     margin: 0;
-    background-color: black;
+    background: url(img/bg.jpg) no-repeat center/cover;
     overflow: hidden;
     color: white;
 }
@@ -22,7 +22,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100%;
-    color: white;
+    color: rgb(255, 161, 84);
     position: relative;
 }
 
@@ -31,22 +31,30 @@ body {
     top: 50px;
 }
 
-.quiz-container {}
+.quiz-container {
+}
 
 .question__num {
     margin-bottom: 20px;
     margin-top: 30px;
-    font-size: 24px;
+    font-size: 30px;
 }
 
 .img {
     max-height: 50vh;
     border-radius: 50px;
     margin-bottom: 20px;
+    transform: scale(1);
+    transition: all 0.2s;
+}
+
+.img:hover {
+    transform: scale(0.97);
+    transition: all 0.2s;
 }
 
 .question {
-    font-size: 18px;
+    font-size: 24px;
     margin-bottom: 30px;
 }
 
@@ -56,14 +64,52 @@ body {
     border-radius: 50px;
     justify-content: center;
     column-gap: 50px;
-    background-image: linear-gradient(45deg, #f00, #ff8420), linear-gradient(45deg, rgb(184, 89, 0), #ff5420);
+    background-image: linear-gradient(45deg, rgb(128, 29, 29), #ff8420), linear-gradient(45deg, rgb(184, 89, 0), #ff5420);
+    transform: scale(1);
+    transition: all 0.2s;
+}
+
+.options:hover {
+    transform: scale(0.95);
+    transition: all 0.2s;
 }
 
 .btn {
-    color: white;
+    color: rgb(255, 255, 255);
     border: none;
     padding: 15px 25px;
-    background-color: rgb(0, 0, 0);
+    background-image: linear-gradient(45deg, rgb(255, 132, 32), rgb(128, 29, 29)), linear-gradient(45deg, rgb(184, 89, 0), #ff5420);
     border-radius: 50px;
     font-family: "Comfortaa", sans-serif;
+    font-size: 16px;
+    transform: scale(1);
+    transition: all 0.2s;
 }
+
+.btn:hover {
+    transform: scale(1.1);
+    transition: all 0.2s;
+}
+
+.result {
+    color: rgb(255, 161, 84);
+    font-size: 40px;
+    max-width: 1150px;
+    margin-top: 10px;
+}
+
+ .wrapper {
+    animation-duration: 2s;
+    animation-name: slide;
+  }
+  
+  @keyframes slide {
+    from {
+      font-size: 200%;
+      height: 300%;
+    }
+  
+    to {
+      height: 100%;
+    }
+  }

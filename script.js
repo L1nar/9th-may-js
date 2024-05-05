@@ -41,7 +41,7 @@ let questions = [
     },
 ]
 
-let images = ['img/num1.jpg', 'img/num2.jpg', 'img/num3.jpg', 'img/num4.jpg', 'img/num5.jpg', 'img/num6.jpg', 'img/num7.jpg', 'img/num8.jpg',];
+let images = ['img/num1.jpg', 'img/num2.jpg', 'img/num3.jpg', 'img/num4.jpg', 'img/num5.jpg', 'img/num6.jpg', 'img/num7.jpg', 'img/num8.jpg', 'img/9may.jpg'];
 let img = document.getElementById('img');
 let i = 0;
 img.src = images[i];
@@ -103,12 +103,15 @@ function displayResult() {
     const optionsElem = document.getElementById('options');
     const resultElem = document.getElementById('result');
     const container = document.getElementById('container');
-    const gradeElem = document.getElementById('grade');
+    const questionNum = document.getElementById('question__num');
     questionElem.style.display = 'none';
-    container.style.display = 'none';
+    questionNum.style.display = 'none';
     optionsElem.style.display = 'none';
-    restart.style.display = 'block';
-    resultElem.textContent = `${input.value}, у вас правильных ответов: ${correctAnswers} из ${questions.length}`
+    if (correctAnswers === 1) {
+        resultElem.textContent = `Поздравляю вас с наступающим праздником 9 мая! У вас ${correctAnswers} правильный ответ из ${questions.length}`
+    } else {
+        resultElem.textContent = `Поздравляю вас с наступающим праздником 9 мая! У вас ${correctAnswers} правильных ответов из ${questions.length}`
+    }
 }
 
 displayQuestion();
